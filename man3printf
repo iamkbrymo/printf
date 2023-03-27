@@ -1,0 +1,60 @@
+PRINTF(3)          Linux Programmer's Manual          PRINTF(3)
+
+NAME
+       printf,  fprintf,  dprintf,  sprintf, snprintf, vprintf,
+       vfprintf, vdprintf, vsprintf, vsnprintf - formatted out‐
+       put conversion
+
+SYNOPSIS
+       #include <stdio.h>
+
+       int printf(const char *format, ...);
+       int fprintf(FILE *stream, const char *format, ...);
+       int dprintf(int fd, const char *format, ...);
+       int sprintf(char *str, const char *format, ...);
+       int snprintf(char *str, size_t size, const char *format, ...);
+
+
+DESCRIPTION
+       The functions in the printf() family produce output  ac‐
+       cording  to  a format as described below.  The functions
+       printf() and vprintf() write output to stdout, the stan‐
+       dard  output stream; fprintf() and vfprintf() write out‐
+       put to the given output stream;  sprintf(),  snprintf(),
+       vsprintf() and vsnprintf() write to the character string
+       str.
+
+The   functions   vprintf(),   vfprintf(),   vdprintf(),
+       vsprintf(),  vsnprintf() are equivalent to the functions
+       printf(), fprintf(), dprintf(),  sprintf(),  snprintf(),
+       respectively, except that they are called with a va_list
+       instead of a variable number of arguments.  These  func‐
+       tions do not call the va_end macro.  Because they invoke
+       the va_arg macro, the value of ap is undefined after the
+       call.  See stdarg(3).
+
+The available convertion specifiers are:
+
+	%c: Prints a single character.
+	%s: Prints a string of characters.
+	%d: Prints integers.
+	%i: Prints integers.
+	%b: Prints the binary representation of an unsigned decimal.
+	%u: Prints unsigned integers
+	%x: Prints the hexadecial representation of an unsigned decimal in lowercase letters
+	%X:Prints the hexadecial representation of an unsigned decimal in uppercase letters
+	%r: Prints a reversed string
+	%R: Prints the Rot13 interpretation of a string
+
+Usage
+	All the files are to be compiled on Ubuntu 14.04 LTS
+	Compile your code with gcc -Wall -Werror -Wextra -pedantic *.c
+	Include the "holberton.h" header file on the functions using the _printf()
+
+SYNTAX
+	 printf("%*d", width, num);
+
+       and
+
+           printf("%2$*1$d", width, num);
+
